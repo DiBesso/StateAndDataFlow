@@ -22,6 +22,8 @@ struct ContentView: View {
             Spacer()
             ButtonView(timer: timer)
             Spacer()
+            LogOutButton()
+                .padding()
         }
     }
 }
@@ -32,7 +34,26 @@ struct ContentView_Previews: PreviewProvider {
         .environmentObject(UserManager())
     }
 }
-
+struct LogOutButton: View {
+   
+    var body: some View {
+        Button(action: {}) {
+            Text("Log Out")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+        }
+        .frame(width: 200, height: 60)
+        .background(Color.red)
+        .cornerRadius(20)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.black, lineWidth: 4)
+        )
+    }
+    
+    
+}
 struct ButtonView: View {
     @ObservedObject var timer: TimeCounter
     
